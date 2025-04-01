@@ -15,6 +15,14 @@ bin/
 !**/src/main/**/bin/
 !**/src/test/**/bin/
 
+# Python & local configuration
+src/apikey.txt
+src/scan_results*.csv
+src/failed_scans.csv
+.venv/
+__pycache__/
+
+
 ### NetBeans ###
 /nbproject/private/
 /nbbuild/
