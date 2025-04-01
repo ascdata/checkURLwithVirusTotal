@@ -17,6 +17,7 @@ bin/
 
 # Python & local configuration
 src/apikey.txt
+src/Web-Base-Links-29-03.csv
 src/scan_results*.csv
 src/failed_scans.csv
 .venv/
