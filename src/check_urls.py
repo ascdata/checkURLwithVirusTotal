@@ -62,12 +62,23 @@ input_file = "C:/Users/NB-Alex/IdeaProjects/checkURLwithVirusTotal/src/Web-Base-
 results_file = "C:/Users/NB-Alex/IdeaProjects/checkURLwithVirusTotal/src/scan_results.csv"
 failed_file = "C:/Users/NB-Alex/IdeaProjects/checkURLwithVirusTotal/src/failed_scans.csv"
 
-# --- Load already scanned URLs from previous runs ---
+# --- Load already scanned URLs from both results and failed scans ---
 scanned_urls = set()
+
+# Add URLs from successful scans
 if os.path.exists(results_file):
     with open(results_file, newline="") as f:
         reader = csv.reader(f)
-        next(reader)  # Skip header
+        next(reader, None)  # Skip header
+        for row in reader:
+            if row and row[0]:
+                scanned_urls.add(row[0].strip())
+
+# Add URLs from failed scans
+if os.path.exists(failed_file):
+    with open(failed_file, newline="") as f:
+        reader = csv.reader(f)
+        next(reader, None)  # Skip header
         for row in reader:
             if row and row[0]:
                 scanned_urls.add(row[0].strip())
